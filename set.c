@@ -1,8 +1,8 @@
+#include "set.h"
 #include <stdio.h>
-#define SET_SIZE 16
+#include <string.h>
 
-int main() {
-}
+
 
 void union_set(char *result, char *set1, char *set2) {
 	int i;
