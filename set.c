@@ -4,14 +4,26 @@
 int main() {
 }
 
-void set_union(char *set1, char *set2, int set_size) {
+void union_set(char *result, char *set1, char *set2) {
 	int i;
-	for (i = 0; i < set_size; i++)
-		set1[i] = set1[i] | set2[i];
+	for (i = 0; i < SET_SIZE; i++)
+		result[i] = set1[i] | set2[i];
 }
 
-void set_intersect(char *set1, char *set2, int set_size) {
+void intersect_set(char *result, char *set1, char *set2) {
 	int i;
-	for (i = 0; i < set_size; i++)
-		set1[i] = set1[i] & set2[i];
+	for (i = 0; i < SET_SIZE; i++)
+		result[i] = set1[i] & set2[i];
+}
+
+void sub_set(char *result, char *set1, char *set2){
+	int i;
+	for(i = 0; i < SET_SIZE; i++)
+		result[i] = set1[i] & ~set2[i];
+}
+
+void symdiff_set(char *result, char *set1, char *set2){
+	int i;
+	for(i = 0; i < SET_SIZE; i++)
+		result[i] = set1[i] ^ set2[i];
 }
