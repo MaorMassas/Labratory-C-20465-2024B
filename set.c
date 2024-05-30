@@ -8,7 +8,7 @@ void read_set(set s, const int *values){
 
 }
 
-void union_set(char *result, set *set1, set *set2) {
+void union_set(char *result, char *set1, set *set2) {
 	int i;
 	for (i = 0; i < SET_SIZE; i++)
 		result[i] = set1[i] | set2[i];
