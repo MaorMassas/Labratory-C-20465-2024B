@@ -2,7 +2,11 @@
 #include <stdio.h>
 #include <string.h>
 
+void read_set(char s, int *values){
+	 /* Initialize set to empty*/
+	 memset(s, 0, SET_SIZE);
 
+}
 
 void union_set(char *result, char *set1, char *set2) {
 	int i;
