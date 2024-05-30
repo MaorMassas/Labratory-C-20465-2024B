@@ -10,7 +10,7 @@ int main() {
 	{
 		char name;
 		set *set;
-	}
+	};
 	sets[]=
 	{
 		{'SETA',&SETA},
