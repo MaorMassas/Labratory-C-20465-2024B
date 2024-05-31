@@ -10,15 +10,25 @@ int main() {
 	{
 		char name;
 		set *set;
-	};
-	sets[]=
-	{
+	} sets[]= {
 		{'SETA',&SETA},
 		{'SETB',&SETB},
 		{'SETC',&SETC},
 		{'SETD',&SETD},
 		{'SETE',&SETE},
-		{'SETF',&SETF}
+		{'SETF',&SETF},
+        {'#',NULL}
 	};
-
+    struct
+    {
+        char *name;
+        void (*func)(void);
+    } cmd[] = {
+            {"read_set",read_set},
+            {"print_set",print_set},
+            {"union_set",union_set},
+            {"intersect_set",intersect_set},
+            {"sub_set",sub_set},
+            {"symdiff",symdiff}
+    };
 }
