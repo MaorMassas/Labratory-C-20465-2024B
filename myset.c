@@ -29,6 +29,6 @@ int main() {
             {"union_set",union_set},
             {"intersect_set",intersect_set},
             {"sub_set",sub_set},
-            {"symdiff",symdiff}
+            {"symdiff",symdiff_set}
     };
 }
