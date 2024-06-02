@@ -6,8 +6,6 @@
 
 #define MAX_INPUT_LEN 256
 
-void handle_input(char *input);
-set* get_set(char *name);
 
 int main() {
     char input[MAX_INPUT_LEN];
@@ -23,7 +21,6 @@ int main() {
 void handle_input(char *input) {
     char *token;
     char *command;
-    set SETA, SETB, SETC, SETD, SETE, SETF;
     set *set1, *set2, *result;
     int *values = NULL;
     int value_count = 0;
@@ -34,14 +31,6 @@ void handle_input(char *input) {
         fprintf(stderr, "Memory allocation failed\n");
         exit(1);
     }
-
-    // Initialize all sets to empty
-    memset(SETA, 0, SET_SIZE);
-    memset(SETB, 0, SET_SIZE);
-    memset(SETC, 0, SET_SIZE);
-    memset(SETD, 0, SET_SIZE);
-    memset(SETE, 0, SET_SIZE);
-    memset(SETF, 0, SET_SIZE);
 
     token = strtok(input, ", \n");
 
