@@ -6,11 +6,12 @@
 
 #define MAX_INPUT_LEN 256
 
+void handle_input(char *input);
 
 int main() {
     char input[MAX_INPUT_LEN];
 
-    /* Read input from the user or a file*/
+    /* Read input from the user or a file */
     while (fgets(input, MAX_INPUT_LEN, stdin)) {
         handle_input(input);
     }
@@ -21,10 +22,11 @@ int main() {
 void handle_input(char *input) {
     char *token;
     char *command;
+    static set SETA, SETB, SETC, SETD, SETE, SETF;
     set *set1, *set2, *result;
     int *values = NULL;
     int value_count = 0;
-    int value_capacity = 10;
+    int value_capacity = 10;  /* Initial capacity */
 
     values = malloc(value_capacity * sizeof(int));
     if (values == NULL) {
@@ -32,9 +34,24 @@ void handle_input(char *input) {
         exit(1);
     }
 
-    token = strtok(input, ", \n");
+    /* Initialize all sets to empty */
+    memset(SETA, 0, SET_SIZE);
+    memset(SETB, 0, SET_SIZE);
+    memset(SETC, 0, SET_SIZE);
+    memset(SETD, 0, SET_SIZE);
+    memset(SETE, 0, SET_SIZE);
+    memset(SETF, 0, SET_SIZE);
 
+    token = strtok(input, " \n");
+    if (token == NULL) {
+        free(values);
+        return;
+    }
 
+    command = token;
+    token = strtok(NULL, " \n");
+
+    /* Parse values and command */
     while (token != NULL) {
         if (isdigit(token[0]) || token[0] == '-') {
             int value = atoi(token);
@@ -56,41 +73,42 @@ void handle_input(char *input) {
             command = token;
             break;
         }
-        token = strtok(NULL, ", \n");
+        token = strtok(NULL, " ,\n");
     }
 
-    if (values[value_count - 1] != -1) {
+    /* Check for correctly terminated set */
+    if (value_count == 0 || values[value_count - 1] != -1) {
         printf("correctly terminated not is members set of List\n");
         free(values);
         return;
     }
 
-
+    /* Determine which command to execute */
     if (strcmp(command, "read_set") == 0) {
-        token = strtok(NULL, ", \n");
+        token = strtok(NULL, " ,\n");
         set1 = get_set(token);
         if (!set1) {
-            printf("nameset Undefined\n");
+            printf("name set Undefined\n");
             free(values);
             return;
         }
         read_set(*set1, values);
     } else if (strcmp(command, "print_set") == 0) {
-        token = strtok(NULL, ", \n");
+        token = strtok(NULL, " ,\n");
         set1 = get_set(token);
         if (!set1) {
-            printf("nameset Undefined\n");
+            printf("name set Undefined\n");
             free(values);
             return;
         }
         print_set(*set1);
     } else {
-        char *result_set_name = strtok(NULL, ", \n");
-        char *set1_name = strtok(NULL, ", \n");
-        char *set2_name = strtok(NULL, ", \n");
+        char *result_set_name = strtok(NULL, " ,\n");
+        char *set1_name = strtok(NULL, " ,\n");
+        char *set2_name = strtok(NULL, " ,\n");
 
         if (!result_set_name || !set1_name || !set2_name) {
-            printf("parameterMissing: for command\n");
+            printf("parameter Missing: for command\n");
             free(values);
             return;
         }
@@ -100,7 +118,7 @@ void handle_input(char *input) {
         set2 = get_set(set2_name);
 
         if (!result || !set1 || !set2) {
-            printf("nameset Undefined\n");
+            printf("name set Undefined\n");
             free(values);
             return;
         }
@@ -114,7 +132,7 @@ void handle_input(char *input) {
         } else if (strcmp(command, "symdiff_set") == 0) {
             symdiff_set(*result, *set1, *set2);
         } else {
-            printf("namecommand Undefined\n");
+            printf("name command Undefined\n");
         }
     }
 
@@ -122,6 +140,7 @@ void handle_input(char *input) {
 }
 
 set* get_set(char *name) {
+    static set SETA, SETB, SETC, SETD, SETE, SETF;
     if (strcmp(name, "SETA") == 0) return &SETA;
     if (strcmp(name, "SETB") == 0) return &SETB;
     if (strcmp(name, "SETC") == 0) return &SETC;

@@ -1,9 +1,3 @@
-print_set SETA
-print_set SETB
-print_set SETC
-print_set SETD
-print_set SETE
-print_set SETF
 read_set SETA, 45, 23, 6, 7, 4, 3, 75, 45, 34, -1
 print_set SETA
 read_set SETB, 5, 4, 3, 2, 78, 45, 43, -1
