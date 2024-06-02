@@ -5,7 +5,7 @@
 
 typedef char set[SET_SIZE];
 
-// Declare the sets as extern to be used across multiple source files
+/* Declare the sets as extern to be used across multiple source files*/
 extern set SETA, SETB, SETC, SETD, SETE, SETF;
 
 void read_set(set s, const int *values);

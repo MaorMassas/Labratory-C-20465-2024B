@@ -10,7 +10,7 @@
 int main() {
     char input[MAX_INPUT_LEN];
 
-    // Read input from the user or a file
+    /* Read input from the user or a file*/
     while (fgets(input, MAX_INPUT_LEN, stdin)) {
         handle_input(input);
     }
@@ -24,7 +24,7 @@ void handle_input(char *input) {
     set *set1, *set2, *result;
     int *values = NULL;
     int value_count = 0;
-    int value_capacity = 10;  // Initial capacity
+    int value_capacity = 10;
 
     values = malloc(value_capacity * sizeof(int));
     if (values == NULL) {
@@ -34,7 +34,7 @@ void handle_input(char *input) {
 
     token = strtok(input, ", \n");
 
-    // Parse values and command
+
     while (token != NULL) {
         if (isdigit(token[0]) || token[0] == '-') {
             int value = atoi(token);
@@ -59,14 +59,13 @@ void handle_input(char *input) {
         token = strtok(NULL, ", \n");
     }
 
-    // Check for correctly terminated set
     if (values[value_count - 1] != -1) {
         printf("correctly terminated not is members set of List\n");
         free(values);
         return;
     }
 
-    // Determine which command to execute
+
     if (strcmp(command, "read_set") == 0) {
         token = strtok(NULL, ", \n");
         set1 = get_set(token);

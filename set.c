@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-// Define the sets
+/* Define the sets*/
 set SETA, SETB, SETC, SETD, SETE, SETF;
 
 void read_set(set s, const int *values){
@@ -39,25 +39,29 @@ void print_set(set s){
 }
 
 void union_set(set result, set set1, set set2) {
-	for (int i = 0; i < SET_SIZE; i++) {
+	int i;
+	for (i = 0; i < SET_SIZE; i++) {
 		result[i] = set1[i] | set2[i];
 	}
 }
 
 void intersect_set(set result, set set1, set set2) {
-	for (int i = 0; i < SET_SIZE; i++) {
+	int i;
+	for (i = 0; i < SET_SIZE; i++) {
 		result[i] = set1[i] & set2[i];
 	}
 }
 
 void sub_set(set result, set set1, set set2) {
-	for (int i = 0; i < SET_SIZE; i++) {
+	int i;
+	for (i = 0; i < SET_SIZE; i++) {
 		result[i] = set1[i] & ~set2[i];
 	}
 }
 
 void symdiff_set(set result, set set1, set set2) {
-	for (int i = 0; i < SET_SIZE; i++) {
+	int i;
+	for (i = 0; i < SET_SIZE; i++) {
 		result[i] = set1[i] ^ set2[i];
 	}
 }
