@@ -1,1 +1,1 @@
-CMakeLists.txt not found in /Users/mwrmss/CLionProjects/Labratory-C-20465-2024B Select CMakeLists.txt
+CMakeLists.txt not found in /home/maor/code/System programing laboratory/Labratory-C-20465-2024B Select CMakeLists.txt
