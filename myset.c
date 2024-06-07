@@ -1,4 +1,4 @@
-// myset.c
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -268,19 +268,19 @@ int main(void) {
     }
 
     while (fgets(command, sizeof(command), fp)) {
-        // Remove trailing newline character
+        /* Remove trailing newline character*/
         size_t len = strlen(command);
         if (len > 0 && command[len - 1] == '\n') {
             command[len - 1] = '\0';
         }
 
-        // Remove leading whitespace
+        /* Remove leading whitespace*/
         char *ptr = command;
         while (*ptr != '\0' && isspace((unsigned char)*ptr)) {
             ptr++;
         }
 
-        // Skip empty lines
+        /* Skip empty lines*/
         if (*ptr == '\0') {
             continue;
         }
