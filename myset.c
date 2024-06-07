@@ -261,6 +261,7 @@ int parse_command(char *command) {
 int main(void) {
     FILE *fp;
     char command[MAX_CMD_LEN];
+    char *ptr;
 
     fp = fopen("test_input.txt", "r");
     if (fp == NULL) {
@@ -276,7 +277,7 @@ int main(void) {
         }
 
         /* Remove leading whitespace*/
-        char *ptr = command;
+        ptr = command;
         while (*ptr != '\0' && isspace((unsigned char)*ptr)) {
             ptr++;
         }
