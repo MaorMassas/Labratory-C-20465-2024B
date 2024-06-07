@@ -81,7 +81,8 @@ command_map cmd[] = {
 };
 
 set* get_set(char *name) {
-    for (int i = 0; sets[i].set != NULL; i++) {
+    int i;
+    for (i = 0; sets[i].set != NULL; i++) {
         if (strcmp(name, sets[i].name) == 0) {
             return sets[i].set;
         }
