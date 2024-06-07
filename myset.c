@@ -51,7 +51,7 @@ struct{
     {"not_valid",not_valid}
 };
 
-void main(void)
+int main(void)
 {
     char command[MAX_CMD_LEN];
     int i;
